@@ -1,0 +1,7 @@
+{
+    "project": [
+        {"file": "package.json", "keywords": ["webstart-id", "webstart-project"] },
+        {"file": "README.md", "keywords": ["webstart-id", "webstart-project", "webstart-setupdate"] },
+        {"file": "jest.config.ts", "keywords": ["webstart-id"] }
+    ]
+}

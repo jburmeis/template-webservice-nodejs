@@ -1,0 +1,10 @@
+# Ignore everything
+**
+
+# Include parts required to build
+!src
+!package.json
+!package-lock.json
+!tsconfig.json
+!tsconfig.production.json
+!.npmrc

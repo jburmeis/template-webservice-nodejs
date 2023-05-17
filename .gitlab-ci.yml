@@ -1,0 +1,84 @@
+################## CI Variables ##################
+## NPM Registry (all stages)
+# Variable: NPM_RC
+# Define this as 'file' variable with the contents of 
+# an .npmrc file if you use a custom npm registry. 
+# You also need to edit the before_script sections.
+#
+## Docker Registry (only build_docker stage)
+# Variables: DOCKER_REGISTRY_URL, DOCKER_REGISTRY_USER, DOCKER_REGISTRY_PASS
+# URL and login credentials of a docker registry.
+# These variables are required if you use this stage!
+#
+## Docker Image Name (only build_docker stage)
+# Variable: IMAGE_NAME
+# Define the name of the generated docker image. 
+# The final image name will be DOCKER_REGISTRY/IMAGE_NAME
+# This variable is required if you use this stage!
+
+stages:
+  - test
+  - build
+  - deploy
+
+image: docker:stable
+
+services:
+    - docker:dind
+
+# Run all test suites
+tests:
+  stage: test
+  image: node:20
+  before_script:
+    # If you use a custom registry: Copy credentials
+    # - cp "$NPM_RC" $CI_PROJECT_DIR/.npmrc
+  script:
+    # Install dependencies and run tests
+    - npm ci
+    - npm run test
+
+
+# Builds the project into a docker image tagged with commit hash
+build:
+  stage: build
+  image: node:20
+  rules:
+    # Only run on default branch (usually 'master' or 'main')
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  before_script:
+    # If you use a custom registry: Copy credentials
+    # - cp "$NPM_RC" $CI_PROJECT_DIR/.npmrc
+  script:
+    # Install dependencies and build
+    - npm ci
+    - npm run production:build
+
+
+# Builds the project into a docker image and pushes it to a registry
+push_docker:
+  stage: deploy
+  rules:
+    # Stage is currently disabled
+   - when: never
+    # Only run on default branch (usually 'master' or 'main')
+   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  variables:
+    DOCKER_HOST: tcp://docker:2375/
+    DOCKER_TLS_CERTDIR: ""
+    IMAGE_NAME: $DOCKER_REGISTRY_URL/$IMAGE_NAME
+
+  before_script:
+    # If you use a custom registry: Copy credentials
+    # - cp "$NPM_RC" $CI_PROJECT_DIR/.npmrc
+    # Login to the container registry
+    - docker login -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASS $DOCKER_REGISTRY_URL
+  script:
+    # Fetch the latest image (speeds up build process if layers can be reused)
+    - docker pull $IMAGE_NAME:latest || true
+    # Build the image, tagged with 'latest' and commit hash
+    - docker build --cache-from $IMAGE_NAME:latest --tag $IMAGE_NAME:$CI_COMMIT_SHA --tag $IMAGE_NAME:latest .
+    # Push the image to the registry
+    - docker push $IMAGE_NAME:latest
+  tags:
+    - dind
