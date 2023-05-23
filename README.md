@@ -1,5 +1,5 @@
 # webstart-project
-This project has been set up with the TEMPLATE template on webstart-setupdate.
+This project has been set up with [this template](webstart-template-url) on webstart-setupdate.
 
 ## Source Directory Structure
 ### Root level files:
