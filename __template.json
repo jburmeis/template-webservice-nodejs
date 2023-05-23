@@ -1,7 +1,27 @@
 {
     "project": [
-        {"file": "package.json", "keywords": ["webstart-id", "webstart-project"] },
-        {"file": "README.md", "keywords": ["webstart-id", "webstart-project", "webstart-template-url", "webstart-setupdate"] },
-        {"file": "jest.config.ts", "keywords": ["webstart-id"] }
+        {
+            "file": "package.json",
+            "keywords": [
+                "webstart-project-id",
+                "webstart-project-name",
+                "webstart-project-author"
+            ]
+        },
+        {
+            "file": "README.md",
+            "keywords": [
+                "webstart-project-id",
+                "webstart-project-name",
+                "webstart-project-setupdate",
+                "webstart-template-url"
+            ]
+        },
+        {
+            "file": "jest.config.ts",
+            "keywords": [
+                "webstart-project-id"
+            ]
+        }
     ]
 }

@@ -1,5 +1,5 @@
-# webstart-project
-This project has been set up with [this template](webstart-template-url) on webstart-setupdate.
+# webstart-project-name
+This project has been set up with [this template](webstart-template-url) on webstart-project-setupdate.
 
 ## Source Directory Structure
 ### Root level files:
@@ -39,8 +39,8 @@ npm run production:start
 ## Docker & CI Deployment
 ### Local Builds
 ```
-docker build -t webstart-id .
-docker run -p 8080:8080 -d webstart-id
+docker build -t webstart-project-id .
+docker run -p 8080:8080 -d webstart-project-id
 ```
 
 ## GitLab CI Builds
@@ -53,7 +53,7 @@ To build and push docker images uncomment the relevant stage and define some rel
 | DOCKER_REGISTRY_URL | true | Variable | false | true | registry.my-organization.com:4445 |
 | DOCKER_REGISTRY_USER | true | Variable | false | true | username |
 | DOCKER_REGISTRY_PASS | true | Variable | false | true | password |
-| IMAGE_NAME | true | Variable | false | false | webstart-id |
+| IMAGE_NAME | true | Variable | false | false | webstart-project-id |
 | NPM_RC | false | File | false | false | registry=https://registry.npmjs.org |
 
 ### Common issues

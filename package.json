@@ -1,8 +1,8 @@
 {
-  "name": "webstart-id",
+  "name": "webstart-project-id",
   "version": "1.0.0",
-  "description": "webstart-project",
-  "author": "jburmeis <jburmeis@outlook.com>",
+  "description": "webstart-project-name",
+  "author": "webstart-project-author",
   "license": "UNLICENSED",
   "private": true,
   "main": "dist/index.js",

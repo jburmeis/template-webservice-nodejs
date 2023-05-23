@@ -1,7 +1,7 @@
 import type { JestConfigWithTsJest } from "ts-jest";
 
 const jestConfig: JestConfigWithTsJest = {
-  displayName: "webstart-id",
+  displayName: "webstart-project-id",
   preset: "ts-jest",
   testEnvironment: "node",
   collectCoverage: true,
