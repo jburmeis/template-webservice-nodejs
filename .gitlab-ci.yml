@@ -39,7 +39,7 @@ tests:
     - npm run test
 
 
-# Builds the project into a docker image tagged with commit hash
+# Builds the project with Node.js
 build:
   stage: build
   image: node:20

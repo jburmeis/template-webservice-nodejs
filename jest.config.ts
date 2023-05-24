@@ -4,6 +4,7 @@ const jestConfig: JestConfigWithTsJest = {
   displayName: "webstart-project-id",
   preset: "ts-jest",
   testEnvironment: "node",
+  roots: ["tests/"],
   verbose: true,
   collectCoverage: true,
   coverageReporters: ["text", "text-summary"],
@@ -12,7 +13,7 @@ const jestConfig: JestConfigWithTsJest = {
     "src/index.ts", 
     "src/logging.ts", 
     "src/application-lifecycle.ts"
-  ],
+  ]
 };
 
 export default jestConfig;

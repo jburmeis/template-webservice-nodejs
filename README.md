@@ -1,6 +1,14 @@
 # webstart-project-name
 This project has been set up with [this template](webstart-template-url) on webstart-project-setupdate.
 
+# Project Information
+This initial README is only intended to get you started with a new project. 
+You should edit this file to contain just the information an external developer needs to know about your project.
+- What is it about?
+- What do I need to run it?
+- What other resources are related to it?
+- ...
+
 # Source Directory Structure
 ## Root level files:
 - `index.ts` Main entry point. General application setup and server start
@@ -43,7 +51,7 @@ docker run -p 8080:8080 -d webstart-project-id
 ```
 
 ## GitLab CI Builds
-GitLab uses the `.gitlab-ci.yml` file to build the project in the GitLab CI process. In the initial setup it only tests and builds the project with Node.js only.
+GitLab uses the `.gitlab-ci.yml` file to build the project in the GitLab CI process. In the initial setup the configuration only tests and builds the project with Node.js.
 To build and push docker images uncomment the relevant stage and define some relevant CI/CD variables (Settings -> CI/CD -> Variables).
 
 
