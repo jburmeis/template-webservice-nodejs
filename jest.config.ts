@@ -4,6 +4,7 @@ const jestConfig: JestConfigWithTsJest = {
   displayName: "webstart-project-id",
   preset: "ts-jest",
   testEnvironment: "node",
+  verbose: true,
   collectCoverage: true,
   coverageReporters: ["text", "text-summary"],
   coveragePathIgnorePatterns: [
