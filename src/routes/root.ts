@@ -54,7 +54,7 @@ async function handleAsync(req: Request, res: Response) {
     // Example: Wait for completion of a long-running task
     await new Promise((resolve) => setTimeout(resolve, 5000));
     res.json({ time: `Operation took ${Date.now() - startTime} ms` });
-  } catch (error: any) {
-    res.status(500).send("Something went wrong: " + error.message);
+  } catch (error) {
+    res.status(500).send(`Something went wrong: ${(error as Error).message}`);
   }
 }
