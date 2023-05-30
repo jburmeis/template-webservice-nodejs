@@ -5,21 +5,21 @@ import DemoService from "./DemoService";
  * For example: Services that manage database connections, runtime information, etc...).
  */
 export type ApplicationServices = {
-  demoService: IDemoService;
+	demoService: IDemoService;
 };
 
 /**
  * Exemplary interface for a demo service
  */
 export interface IDemoService {
-  getRandomMessages(length: number): string[];
+	getRandomMessages(length: number): string[];
 }
 
 /**
  * Creates a new set of instances of each application service
  */
 export function createApplicationServices(): ApplicationServices {
-  return {
-    demoService: new DemoService(),
-  };
+	return {
+		demoService: new DemoService(),
+	};
 }
